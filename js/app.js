@@ -1,9 +1,10 @@
-const api = {
-    apikey: "afaf9f8d48cff6cafd32e23220bcfdbf",
-    api: "https://api.openweathermap.org/data/2.5/"
-}
-
 // function getWeather() {
+//     const location = document.getElementById("location");
+//     const weather = document.getElementById("weather");
+//     let api = "https://api.openweathermap.org/data/2.5/weather";
+//     let apiKey = "5e298e728c465424ef66f0b04798fcab";
+//     let api2 = "https://api.openweathermap.org/data/2.5/weather";
+//
 //     navigator.geolocation.getCurrentPosition(resolve, reject);
 //
 //     function resolve(position) {
@@ -12,6 +13,7 @@ const api = {
 //
 //         let url = api + "?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey + "&units=metric";
 //
+//
 //         fetch(url)
 //             .then(res => res.json())
 //             .then(data => {
@@ -19,11 +21,11 @@ const api = {
 //                 let temp = data.main.feels_like;
 //                 weather.innerHTML = `
 //                    <div class="card" style="width: 22rem;">
-//                    <img class="card-img-top" src="../images/weather.gif" alt="Weather">
+//                    <img class="card-img-top" src="weather.gif" alt="Weather">
 //                         <div class="card-body">
 //     <h5 class="card-title ">${temp} ° C</h5>
 //     <p class="card-text">${data.name}</p>
-//     <p class="card-text text">${data.weather[0].description}</p>
+//     <p class="card-text text">${data.weather[0].main}</p>
 //     <a href="#" class="btn btn-primary" onclick="window.location.reload(false)">Hava Durumune yenile</a>
 //   </div>
 // </div>
@@ -35,20 +37,25 @@ const api = {
 //         location.innerHTML = "Konumunuz alınamadı";
 //     }
 // }
+//getWeather();
+function getWeather(cityName) {
+    const show = document.querySelector("#loc")
+    let apiKey = "5e298e728c465424ef66f0b04798fcab";
+    let api2 = "https://api.openweathermap.org/data/2.5/weather";
+    let url = api2 + "?q=" + cityName + "&appid=" + apiKey + "&units=metric&lang=tr";
 
-    function getResults(query) {
-    fetch(`${api.api}weather?q=${query}&units=metric&APPID=${api.apikey}`)
-        .then(weather => {
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+           //console.log(data)
+            let temp = data.main.temp;
+            let name =data.name;
+           // console.log(temp + " °C")
+            show.innerHTML = `${name} : ${temp} °C`
+            return temp;
+        })
 
-            return weather.json();
-        }).then(displayResults());
 }
-  function displayResults(weather){
-    console.log(weather)
-
-  }
-
-// getWeather();
 
 /* SVG Türkiye haritasi js */
 
@@ -57,7 +64,7 @@ function svgturkiyeharitasi() {
     const info = document.querySelector('.il-isimleri');
 
     element.addEventListener(
-        'click',
+        'mouseover',
         function (event) {
             if (event.target.tagName === 'path' && event.target.parentNode.id !== 'guney-kibris') {
                 info.innerHTML = [
@@ -65,9 +72,8 @@ function svgturkiyeharitasi() {
                     event.target.parentNode.getAttribute('data-iladi'),
                     '</div>'
                 ].join('');
-                const query=event.target.parentNode.getAttribute('data-iladi');
-                console.log(query)
-                getResults(query)
+                const cityName = event.target.parentNode.getAttribute('data-iladi');
+                getWeather(cityName)
             }
         }
     );
