@@ -1,10 +1,4 @@
-html {
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
-    sans-serif;
-}
-body {
-    margin: 0 auto;
-}
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100&display=swap');
 /* SVG Türkiye haritası css */
 .svg-turkiye-haritasi {
     max-width: 1140px;
@@ -46,11 +40,82 @@ body {
     pointer-events: none;
 }
 
-.special{
+.myStyle {
+    font-family: 'Catamaran', sans-serif;
+    text-align: center;
+}
+
+.special {
     white-space: nowrap !important;
     width: auto;
     height: auto;
-
 }
 
+.myBorder {
+    border: 1px solid #cdc7c7;
+    top: 0;
+    height: 4rem;
+    padding-bottom: .50rem;
+    margin-bottom: .50rem;
+}
 
+footer {
+    position: absolute;
+    border: 1px solid #bdb7ae;
+    width: 100%;
+    bottom: 0;
+}
+
+.border {
+    border: 1px solid gray;
+    bottom: 0;
+}
+
+.copyright {
+    display: flex;
+    justify-content: space-between;
+    font-size: .8em;
+    padding-top: .50rem;
+}
+
+.left {
+    padding-left: 1rem;
+}
+
+.right {
+    padding-right: 1rem;
+}
+
+.copyright ul {
+    display: flex;
+    list-style-type: none;
+    padding-left: 0;
+    column-gap: 1em;
+}
+a {
+    transition: all .3s;
+}
+i{
+    color: black;
+}
+i:hover {
+    color: #1094F6;
+}
+
+.fab {
+    font-size: 19px;
+}
+
+.name {
+    font-weight: bold;
+    color: black;
+}
+.name:hover{
+    text-decoration: none;
+    color: #1094F6;
+}
+.image{
+    background-image: url('https://forums.x-plane.org/uploads/monthly_2018_04/5ad06dd85ed29_ReplacementcloudsAdvancedClouds1.3(8).jpg.bc88cb4639be36016e4e237a24e22c98.jpg');
+    height: 100vh;
+    background-repeat: no-repeat;
+}

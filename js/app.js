@@ -26,7 +26,7 @@ function svgturkiyeharitasi() {
     const info = document.querySelector('.il-isimleri');
 
     element.addEventListener(
-        'mouseover',
+        'click',
         function (event) {
             if (event.target.tagName === 'path' && event.target.parentNode.id !== 'guney-kibris') {
                 info.innerHTML = [
