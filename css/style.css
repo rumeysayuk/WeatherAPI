@@ -1,27 +1,10 @@
 html {
     font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
     sans-serif;
-    text-align: center;
 }
-
 body {
     margin: 0 auto;
 }
-
-.card-title {
-    text-align: center;
-    align-self: center;
-}
-
-.text {
-    text-align: center;
-    align-self: center;
-}
-
-.weather {
-    text-align: center;
-}
-
 /* SVG Türkiye haritası css */
 .svg-turkiye-haritasi {
     max-width: 1140px;
@@ -61,6 +44,13 @@ body {
 
 #guney-kibris {
     pointer-events: none;
+}
+
+.temp{
+    white-space: nowrap !important;
+    width: auto;
+    height: auto;
+
 }
 
 
