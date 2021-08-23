@@ -1,17 +1,21 @@
 async function getWeather(cityName) {
-    let apiKey = "5e298e728c465424ef66f0b04798fcab";
-    let api = "https://api.openweathermap.org/data/2.5/weather";
-    let url = api + "?q=" + cityName + "&appid=" + apiKey + "&units=metric&lang=tr";
+    //  let apiKey = "5e298e728c465424ef66f0b04798fcab";
+    //  let api = "https://api.openweathermap.org/data/2.5/weather";
+    // let url = api + "?q=" + cityName + "&appid=" + apiKey + "&units=metric&lang=tr";
+    let apiKey2 = "ac36f8aa20344bf8adb80910212308";
+    let api2 = "https://api.worldweatheronline.com/premium/v1/weather.ashx";
+    let url2 = api2 + "?key=" + apiKey2 + "&q=" + cityName + "&format=json&num_of_days=5&lang=tr";
     let weather;
-    await fetch(url)
+    await fetch(url2)
         .then(res => res.json())
         .then(data => {
 
-             let temp = data.main.temp;
-            console.log(temp)
+            let temp2 = data.data.weather[0].hourly[3].tempC;
+            // let temp = data.main.temp;
             //let temp2=data.list[1].main.temp;
-            weather = temp;
+            weather = temp2;
         })
+
     return weather;
 }
 
@@ -22,19 +26,19 @@ function svgturkiyeharitasi() {
     const info = document.querySelector('.il-isimleri');
 
     element.addEventListener(
-        'click',
+        'mouseover',
         function (event) {
             if (event.target.tagName === 'path' && event.target.parentNode.id !== 'guney-kibris') {
                 info.innerHTML = [
-                    '<div id="temp" class="temp">',
+                    '<div id="special" class="special">',
                     event.target.parentNode.getAttribute('data-iladi'),
                     '</div>'
                 ].join('');
-                const cityName = event.target.parentNode.getAttribute('data-iladi');
-                 getWeather(cityName).then((temp)=>{
-                     const show=document.querySelector("#temp")
-                     show.innerHTML+=" "+temp+" °C";
-                 })
+                const cityName = event.target.parentNode.getAttribute('id');
+                getWeather(cityName).then((city_weather) => {
+                    const show = document.querySelector("#special")
+                    show.innerHTML += " " + city_weather + " °C";
+                })
             }
         }
     );

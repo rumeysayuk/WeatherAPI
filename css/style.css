@@ -46,7 +46,7 @@ body {
     pointer-events: none;
 }
 
-.temp{
+.special{
     white-space: nowrap !important;
     width: auto;
     height: auto;
